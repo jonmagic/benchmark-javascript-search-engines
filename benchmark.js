@@ -4,6 +4,7 @@ var Benchmark = require('benchmark')
 var suite = new Benchmark.Suite
 var filenames = fs.readdirSync(__dirname + "/corpus")
 
+
 // fs#readdir
 suite.add('fs#readdir', function(deferred) {
   fs.readdir(__dirname + "/corpus", function(err, files) {
@@ -16,6 +17,14 @@ suite.add('fs#readdir', function(deferred) {
 .add('fs#readFile', function(deferred) {
   fs.readFile(__dirname + "/corpus/" + filenames[Math.floor(Math.random() * (641 - 0 + 1))], function(err, contents) {
     if(!err) {
+      deferred.resolve()
+    }
+  })
+}, {'defer': true})
+.add('fs#stat', function(deferred) {
+  fs.stat(__dirname + "/corpus/" + filenames[Math.floor(Math.random() * (641 - 0 + 1))], function(err, stat) {
+    if(!err) {
+      stat.mtime.getTime()
       deferred.resolve()
     }
   })
