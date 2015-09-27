@@ -1,0 +1,13 @@
+{
+  "name": "benchmark-javascript-search-engines",
+  "author": "Jonathan Hoyt",
+  "license": "MIT",
+  "dependencies": {
+    "benchmark": "^1.0.0",
+    "lunr": "^0.5.12",
+    "search-index": "^0.6.11"
+  },
+  "scripts": {
+    "benchmark": "node benchmark.js"
+  }
+}
